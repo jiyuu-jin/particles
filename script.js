@@ -5,8 +5,8 @@
 	 * http://twitter.com/hakimel
 	 */
 	
-	var SCREEN_WIDTH = 900;
-	var SCREEN_HEIGHT = 600;
+	var SCREEN_WIDTH = window.innerWidth;
+	var SCREEN_HEIGHT = window.innerHeight;
 	
 	var RADIUS = 110;
 	
@@ -17,12 +17,22 @@
 	// The number of particles that are used to generate the trail
 	var QUANTITY = 25;
 
+	var CONVERGENCES = 7;
+
 	var canvas;
 	var context;
 	var particles;
-	
-	var mouseX = (window.innerWidth - SCREEN_WIDTH);
-	var mouseY = (window.innerHeight - SCREEN_HEIGHT);
+
+
+	//Initial Positions
+
+    for (var i = 0; i < CONVERGENCES; i++){
+        var mouseX = (Math.random() * 1000);
+        var mouseY = (Math.random() * 1000);
+        createParticles();
+        console.log(mouseX, mouseY)
+    }
+
 	var mouseIsDown = false;
 	
 	init();
@@ -35,18 +45,14 @@
 			context = canvas.getContext('2d');
 			
 			// Register event listeners
-			document.addEventListener('mousemove', documentMouseMoveHandler, false);
-			document.addEventListener('mousedown', documentMouseDownHandler, false);
-			document.addEventListener('mouseup', documentMouseUpHandler, false);
-			canvas.addEventListener('touchstart', canvasTouchStartHandler, false);
-			canvas.addEventListener('touchmove', canvasTouchMoveHandler, false);
 			window.addEventListener('resize', windowResizeHandler, false);
-			
-			createParticles();
-			
-			windowResizeHandler();
-			
-			setInterval( loop, 1000 / 60 );
+
+        	windowResizeHandler();
+
+
+            setInterval( randomPoint, 5000 );
+
+            setInterval( loop, 1000 / 60 );
 		}
 	}
 
@@ -69,35 +75,9 @@
 		}
 	}
 
-	function documentMouseMoveHandler(event) {
-		mouseX = event.clientX - (window.innerWidth - SCREEN_WIDTH) * .5;
-		mouseY = event.clientY - (window.innerHeight - SCREEN_HEIGHT) * .5;
-	}
-	
-	function documentMouseDownHandler(event) {
-		mouseIsDown = true;
-	}
-	
-	function documentMouseUpHandler(event) {
-		mouseIsDown = false;
-	}
-
-	function canvasTouchStartHandler(event) {
-		if(event.touches.length == 1) {
-			event.preventDefault();
-
-			mouseX = event.touches[0].pageX - (window.innerWidth - SCREEN_WIDTH) * .5;
-			mouseY = event.touches[0].pageY - (window.innerHeight - SCREEN_HEIGHT) * .5;
-		}
-	}
-	
-	function canvasTouchMoveHandler(event) {
-		if(event.touches.length == 1) {
-			event.preventDefault();
-
-			mouseX = event.touches[0].pageX - (window.innerWidth - SCREEN_WIDTH) * .5;
-			mouseY = event.touches[0].pageY - (window.innerHeight - SCREEN_HEIGHT) * .5;
-		}
+	function randomPoint(){
+        mouseX = (Math.random() * 1000);
+        mouseY = (Math.random() * 1000);
 	}
 	
 	function windowResizeHandler() {
@@ -108,8 +88,6 @@
 		canvas.height = SCREEN_HEIGHT;
 		
 		canvas.style.position = 'absolute';
-		canvas.style.left = (window.innerWidth - SCREEN_WIDTH) * .5 + 'px';
-		canvas.style.top = (window.innerHeight - SCREEN_HEIGHT) * .5 + 'px';
 	}
 
 	function loop() {
