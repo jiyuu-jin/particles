@@ -15,7 +15,7 @@
 	var RADIUS_SCALE_MAX = 1.5;
 	
 	// The number of particles that are used to generate the trail
-	var QUANTITY = 25;
+	var QUANTITY = 35;
 
 	var CONVERGENCES = 7;
 
@@ -25,7 +25,6 @@
 
 
 	//Initial Positions
-
     for (var i = 0; i < CONVERGENCES; i++){
         var mouseX = (Math.random() * 1000);
         var mouseY = (Math.random() * 1000);
@@ -50,7 +49,7 @@
         	windowResizeHandler();
 
 
-            setInterval( randomPoint, 5000 );
+            setInterval( randomPoint, 4000 );
 
             setInterval( loop, 1000 / 60 );
 		}
@@ -65,7 +64,7 @@
 				shift: { x: mouseX, y: mouseY },
 				size: 1,
 				angle: 0,
-				speed: 0.01+Math.random()*0.04,
+				speed: 0.01+Math.random()*0.02,
 				targetSize: 1,
 				fillColor: '#' + (Math.random() * 0x404040 + 0xaaaaaa | 0).toString(16),
 				orbit: RADIUS*.5 + (RADIUS * .5 * Math.random())
@@ -145,3 +144,14 @@
 			context.fill();
 		}
 	}
+
+
+	function showInterface(){
+		var element = document.getElementById('Interface');
+		element.style.display = 'block';
+	}
+
+    function hideInterface(){
+        var element = document.getElementById('Interface');
+        element.style.display = 'none';
+    }

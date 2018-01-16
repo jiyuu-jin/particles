@@ -20,9 +20,46 @@
 			#world{
 				display: block;
 			}
+
+			.button{
+				position: absolute;
+				top: 15px;
+				right: 15px;
+				z-index: 50;
+			}
+
+			.interface{
+				position: absolute;
+				width: 500px;
+				height: 500px;
+				display:none;
+				z-index: 50;
+				color: white;
+			}
+
 		</style>
 
   <body>
+
+	<button onclick="showInterface();" class="button">Options</button>
+
+
+	<div id="Interface" class="interface">
+		Particle speed:<br>
+		<input type="text" name="ParticleSpeed" value="20">
+		<br>
+		Convergence point movement speed<br>
+		<input type="text" name="ConvergenceSpeed" value="10">
+		<br>
+		Convergence radius <br>
+		<input type="text" name="ParticleSpeed" value="110">
+		<br>
+		Convergence shape<br>
+		<input type="text" name="lastname" value="Circle">
+		<br><br>
+		<input onclick="hideInterface();" type="submit" value="Submit">
+	</div>
+
 
 <canvas id="world"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas>
 
