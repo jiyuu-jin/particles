@@ -18,6 +18,8 @@
 	// The number of particles that are used to generate the trail
 	var QUANTITY = 45;
 
+    var QUANTITY2 = 145;
+
 	var CONVERGENCES = 7;
 
 	var canvas;
@@ -137,7 +139,7 @@
     function createParticles4(){
         particles4 = [];
 
-        for (var i = 0; i < QUANTITY; i++) {
+        for (var i = 0; i < QUANTITY2; i++) {
             var particle = {
                 position: { x: mouseX4, y: mouseY4 },
                 shift: { x: mouseX4 + 5, y: mouseY4 + 5 },
