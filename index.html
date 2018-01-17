@@ -37,28 +37,37 @@
 				color: white;
 			}
 
+			.overlay{
+				position: fixed;
+				height: 100vh;
+				width: 100vw;
+				background-color: rgba(47, 64, 255, 0.49);
+				z-index: 50;
+			}
+
 		</style>
 
   <body>
 
-	<button onclick="showInterface();" class="button">Options</button>
-
-
-	<div id="Interface" class="interface">
-		Particle speed:<br>
-		<input type="text" name="ParticleSpeed" value="20">
-		<br>
-		Convergence point movement speed<br>
-		<input type="text" name="ConvergenceSpeed" value="10">
-		<br>
-		Convergence radius <br>
-		<input type="text" name="ParticleSpeed" value="110">
-		<br>
-		Convergence shape<br>
-		<input type="text" name="lastname" value="Circle">
-		<br><br>
-		<input onclick="hideInterface();" type="submit" value="Submit">
+	<div class="overlay">
+		<div id="Interface" class="interface">
+			Particle speed:<br>
+			<input type="text" name="ParticleSpeed" value="20">
+			<br>
+			Convergence point movement speed<br>
+			<input type="text" name="ConvergenceSpeed" value="10">
+			<br>
+			Convergence radius <br>
+			<input type="text" name="ParticleSpeed" value="110">
+			<br>
+			Convergence shape<br>
+			<input type="text" name="lastname" value="Circle">
+			<br><br>
+			<input onclick="hideInterface();" type="submit" value="Submit">
+		</div>
 	</div>
+
+
 
 
 <canvas id="world"><p class="noCanvas">You need a <a href="http://www.google.com/chrome">modern browser</a> to view this.</p></canvas>
